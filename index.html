@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Fundamentos de Python - Senac</title>
+    <!-- Tailwind CSS para um design moderno e limpo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para ícones amigáveis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efeito de Spinner de carregamento */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Container Principal -->
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-100 transition-all duration-300">
+        
+        <!-- Cabeçalho Principal -->
+        <div class="bg-gradient-to-r from-cyan-700 to-indigo-800 p-6 text-white text-center">
+            <div class="inline-flex p-3 bg-white/10 rounded-full mb-3">
+                <i class="fa-brands fa-python text-3xl text-yellow-300"></i>
+            </div>
+            
+            <h1 class="text-2xl font-bold tracking-tight">Quiz: Fundamentos de Python</h1>
+            <h2 class=" font-bold tracking-tight">UC 3 : Desenvolver algoritmos</h2>
+            <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas-SENAC DF</p>
+        </div>
+
+        <!-- TELA 1: IDENTIFICAÇÃO (OBRIGATÓRIA) -->
+        <div id="step-auth" class="p-8">
+            <h2 class="text-xl font-semibold text-slate-800 mb-2">
+                <i class="fa-solid fa-user-graduate text-indigo-600 mr-2"></i>Área do Aluno
+            </h2>
+            <p class="text-slate-500 text-sm mb-6">Por favor, preencha seus dados para iniciar a avaliação. Seu relatório final será enviado automaticamente ao professor Jociel ao finalizar.</p>
+            
+            <form id="auth-form" onsubmit="startQuiz(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Seu Nome Completo *</label>
+                    <input type="text" id="student-name" required placeholder="Ex: João Silva de Souza" 
+                           class="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 transition">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Número da Turma *</label>
+                    <input type="text" id="student-class" required placeholder="Ex: 2026.07.18" 
+                           class="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 transition">
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" 
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-md shadow-indigo-100">
+                        Começar Avaliação <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- TELA 2: EXECUÇÃO DO QUIZ -->
+        <div id="step-quiz" class="hidden p-8">
+            <!-- Progresso -->
+            <div class="flex items-center justify-between text-xs text-slate-400 font-medium mb-3">
+                <span id="question-counter">Questão 1 de 10</span>
+                <span id="quiz-progress-percent">10% Concluído</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2 mb-6 overflow-hidden">
+                <div id="progress-bar" class="bg-indigo-600 h-2 transition-all duration-300" style="width: 10%"></div>
+            </div>
+
+            <!-- Card da Questão -->
+            <div class="mb-6">
+                <div id="question-text" class="text-lg font-medium text-slate-800 mb-4 whitespace-pre-line">
+                    <!-- Inserido via JS -->
+                </div>
+            </div>
+
+            <!-- Alternativas -->
+            <div id="options-container" class="space-y-3">
+                <!-- Inserido via JS -->
+            </div>
+
+            <!-- Navegação -->
+            <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
+                <button id="next-btn" onclick="nextQuestion()" disabled
+                        class="bg-slate-300 text-slate-500 cursor-not-allowed font-semibold py-2.5 px-6 rounded-lg transition duration-200 flex items-center gap-2">
+                    Próxima Questão <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- TELA DE TRANSIÇÃO: ENVIANDO RESPOSTAS AUTOMATICAMENTE -->
+        <div id="step-sending" class="hidden p-12 text-center">
+            <div class="inline-flex p-4 rounded-full bg-indigo-50 text-indigo-600 mb-4 animate-bounce">
+                <i class="fa-solid fa-paper-plane text-3xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-slate-800 mb-2">Enviando suas respostas...</h2>
+            <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6">Por favor, aguarde um instante enquanto salvamos o seu resultado e enviamos o relatório diretamente para o e-mail do professor.</p>
+            <div class="flex justify-center">
+                <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+            </div>
+        </div>
+
+        <!-- TELA 3: RELATÓRIO FINAL / CONFIRMAÇÃO -->
+        <div id="step-result" class="hidden p-8">
+            <div class="text-center mb-6">
+                <div id="result-icon-container" class="inline-flex p-4 rounded-full mb-3">
+                    <i id="result-icon" class="text-4xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800" id="result-title">Avaliação Finalizada!</h2>
+                <p class="text-slate-500 mt-1" id="result-subtitle">Seu desempenho foi enviado com sucesso.</p>
+            </div>
+
+            <!-- Aviso de sucesso no envio silencioso -->
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-4 mb-6 flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-lg mt-0.5"></i>
+                <div>
+                    <h4 class="text-sm font-bold">Relatório Enviado Automaticamente!</h4>
+                    <p class="text-xs text-emerald-700 mt-0.5">Sua nota e respostas já foram salvas e enviadas com segurança ao e-mail: <strong class="font-semibold">jociel.6108@df.senac.br</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Quadro de Notas -->
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 mb-6 text-center">
+                <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Sua Pontuação</span>
+                <div class="text-4xl font-extrabold text-slate-800" id="score-text">0 / 10</div>
+                <div class="text-sm font-semibold mt-2 text-indigo-600" id="score-percentage">Porcentagem: 0%</div>
+                <div class="text-xs text-slate-400 mt-1.5" id="student-meta">Aluno: - | Turma: -</div>
+            </div>
+
+            <!-- Backup de Envio Manual em caso de falhas de internet -->
+            <div class="border border-slate-100 rounded-xl p-4 mb-6 bg-slate-50/50">
+                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 text-center">Problemas com a conexão? (Canais de Backup)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <button onclick="sendViaWhatsApp()" class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 px-3 rounded-lg transition shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Enviar por WhatsApp
+                    </button>
+                    <button onclick="copyToClipboard()" class="flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold py-2 px-3 rounded-lg transition shadow-sm">
+                        <i class="fa-solid fa-copy"></i> Copiar Código do Relatório
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="toggleDetailedReport()" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline">
+                    Visualizar espelho das minhas respostas
+                </button>
+            </div>
+
+            <!-- Espelho de Respostas (Escondido por padrão) -->
+            <div id="detailed-report" class="hidden mt-6 pt-6 border-t border-slate-100 space-y-4 max-h-60 overflow-y-auto pr-2">
+                <h3 class="text-sm font-bold text-slate-700">Resumo das Questões:</h3>
+                <!-- Inserido dinamicamente -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal de Feedback Personalizado (Substitui o alert tradicional) -->
+    <div id="custom-modal" class="hidden fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 text-center transform scale-95 transition-all duration-300">
+            <div id="modal-icon-bg" class="inline-flex p-3 rounded-full mb-3">
+                <i id="modal-icon" class="text-2xl"></i>
+            </div>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-800 mb-1"></h3>
+            <p id="modal-message" class="text-slate-500 text-sm mb-5"></p>
+            <button onclick="closeModal()" class="w-full bg-slate-800 hover:bg-slate-950 text-white font-semibold py-2 px-4 rounded-lg text-sm transition">
+                Ok, Entendi
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // E-mail do Professor Fixo
+        const TEACHER_EMAIL = "jociel.6108@df.senac.br";
+
+        // Banco de Dados do Quiz (10 questões com alternativas)
+        const quizQuestions = [
+            {
+                question: "Qual das alternativas a seguir apresenta uma atribuição correta e tipicamente usada para uma variável em Python?",
+                options: ["x = 10", "int x = 10;", "let x = 10", "var x := 10"],
+                correct: 0
+            },
+            {
+                question: "Embora Python não tenha constantes nativas protegidas pelo sistema, qual é a convenção adotada pela comunidade para indicar que uma variável deve ser tratada como constante?",
+                options: [
+                    "Usar a palavra-chave 'const' antes do nome da variável.",
+                    "Declarar o nome da variável totalmente em letras maiúsculas (ex: PI = 3.14).",
+                    "Colocar um cifrão ($) na frente do nome.",
+                    "Iniciar o nome com dois sublinhados (ex: __pi = 3.14)."
+                ],
+                correct: 1
+            },
+            {
+                question: "Considere a lista em Python: valores = [10, 20, 30, 40]. Qual comando exibe o número 30?",
+                options: ["print(valores[3])", "print(valores[1])", "print(valores[2])", "print(valores.get(2))"],
+                correct: 2
+            },
+            {
+                question: "Qual é a estrutura correta para testar se uma variável idade é maior ou igual a 18 em Python?",
+                options: ["if (idade >= 18) { }", "if idade >= 18 then", "if [idade >= 18]", "if idade >= 18:"],
+                correct: 3
+            },
+            {
+                question: "O que acontece se a condição do if for falsa e houver um bloco else associado?",
+                options: [
+                    "O programa gera um erro de execução.",
+                    "O código dentro do bloco 'else' será executado.",
+                    "O programa ignora tanto o 'if' quanto o 'else' e para a execução.",
+                    "O bloco 'if' é reavaliado em um laço infinito."
+                ],
+                correct: 1
+            },
+            {
+                question: "Se quisermos verificar múltiplas condições em sequência (ex: se for menor que 10, se for menor que 20, senão...), qual palavra-chave intermediária usamos entre o if e o else?",
+                options: ["else if", "switch", "elif", "otherwise"],
+                correct: 2
+            },
+            {
+                question: "Qual será o resultado da execução do seguinte trecho de código?\n\nfor i in range(3):\n    print(i)",
+                options: [
+                    "Os números 1, 2 e 3 serão impressos em linhas separadas.",
+                    "Os números 0, 1 e 2 serão impressos em linhas separadas.",
+                    "O número 3 será impresso três vezes.",
+                    "O código resultará em um erro porque o tipo não foi definido."
+                ],
+                correct: 1
+            },
+            {
+                question: "Como podemos usar um laço for para percorrer e imprimir cada elemento de uma lista chamada frutas?",
+                options: [
+                    "for (i=0; i<len(frutas); i++):\n    print(frutas[i])",
+                    "foreach frutas as fruta:\n    print(fruta)",
+                    "for i in frutas.length():\n    print(i)",
+                    "for fruta in frutas:\n    print(fruta)"
+                ],
+                correct: 3
+            },
+            {
+                question: "Dado o código abaixo, qual será a saída impressa?\n\nnumeros = [1, 2, 3]\ntotal = 0\nfor n in numeros:\n    total = total + n\nprint(total)",
+                options: ["3", "6", "[1, 2, 3]", "0"],
+                correct: 1
+            },
+            {
+                question: "O que acontece se esquecermos de indentar corretamente o código que está dentro de um bloco if ou de um laço for em Python?",
+                options: [
+                    "O código roda normalmente, pois a indentação é apenas estética.",
+                    "O Python tenta adivinhar o bloco usando chaves invisíveis.",
+                    "O interpretador Python lança um erro do tipo 'IndentationError' e interrompe a execução.",
+                    "O programa entra em loop infinito automaticamente."
+                ],
+                correct: 2
+            }
+        ];
+
+        // Estado Global da Aplicação
+        let currentQuestionIndex = 0;
+        let selectedOptionIndex = null;
+        let studentResponses = [];
+        let studentData = {
+            name: '',
+            class: ''
+        };
+
+        // Modais Personalizados
+        function showModal(title, msg, type = 'success') {
+            const modal = document.getElementById('custom-modal');
+            const iconBg = document.getElementById('modal-icon-bg');
+            const icon = document.getElementById('modal-icon');
+            const titleEl = document.getElementById('modal-title');
+            const msgEl = document.getElementById('modal-message');
+
+            titleEl.innerText = title;
+            msgEl.innerText = msg;
+
+            if (type === 'success') {
+                iconBg.className = "inline-flex p-3 rounded-full mb-3 bg-emerald-100 text-emerald-600";
+                icon.className = "fa-solid fa-circle-check text-2xl";
+            } else if (type === 'error') {
+                iconBg.className = "inline-flex p-3 rounded-full mb-3 bg-rose-100 text-rose-600";
+                icon.className = "fa-solid fa-circle-exclamation text-2xl";
+            } else {
+                iconBg.className = "inline-flex p-3 rounded-full mb-3 bg-blue-100 text-blue-600";
+                icon.className = "fa-solid fa-info-circle text-2xl";
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Inicia o Quiz após validar dados do aluno
+        function startQuiz(event) {
+            event.preventDefault();
+            
+            studentData.name = document.getElementById('student-name').value.trim();
+            studentData.class = document.getElementById('student-class').value.trim();
+
+            if(!studentData.name || !studentData.class) {
+                showModal("Campos Vazios", "Por favor, informe seu nome e sua turma para prosseguir.", "error");
+                return;
+            }
+
+            // Mudar de tela
+            document.getElementById('step-auth').classList.add('hidden');
+            document.getElementById('step-quiz').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        // Carrega a Questão Ativa
+        function loadQuestion() {
+            selectedOptionIndex = null;
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            
+            // Atualizar barra e contadores
+            document.getElementById('question-counter').innerText = `Questão ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
+            const percent = Math.round(((currentQuestionIndex) / quizQuestions.length) * 100);
+            document.getElementById('quiz-progress-percent').innerText = `${percent}% Concluído`;
+            document.getElementById('progress-bar').style.width = `${percent || 5}%`;
+
+            // Renderizar texto da questão
+            document.getElementById('question-text').innerText = currentQuestion.question;
+
+            // Renderizar alternativas
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            currentQuestion.options.forEach((option, idx) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 transition duration-150 flex items-start gap-3 outline-none group";
+                button.onclick = () => selectOption(idx);
+                button.id = `option-btn-${idx}`;
+                
+                button.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-400 bg-white group-hover:border-indigo-400 group-hover:text-indigo-600 transition shrink-0 mt-0.5" id="opt-badge-${idx}">
+                        ${String.fromCharCode(65 + idx)}
+                    </span>
+                    <span class="text-slate-700 text-sm font-medium leading-relaxed">${option.replace(/\n/g, '<br>')}</span>
+                `;
+                optionsContainer.appendChild(button);
+            });
+
+            // Resetar botão Próxima
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = true;
+            nextBtn.className = "bg-slate-300 text-slate-500 cursor-not-allowed font-semibold py-2.5 px-6 rounded-lg transition duration-200 flex items-center gap-2";
+        }
+
+        // Selecionar uma opção
+        function selectOption(index) {
+            selectedOptionIndex = index;
+            
+            // Estilizar botões
+            quizQuestions[currentQuestionIndex].options.forEach((_, idx) => {
+                const btn = document.getElementById(`option-btn-${idx}`);
+                const badge = document.getElementById(`opt-badge-${idx}`);
+                if (idx === index) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-indigo-600 bg-indigo-50/40 transition duration-150 flex items-start gap-3 outline-none shrink-0";
+                    badge.className = "w-6 h-6 rounded-full border border-indigo-600 flex items-center justify-center text-xs font-bold text-white bg-indigo-600 transition shrink-0 mt-0.5";
+                } else {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 transition duration-150 flex items-start gap-3 outline-none shrink-0";
+                    badge.className = "w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-400 bg-white transition shrink-0 mt-0.5";
+                }
+            });
+
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = false;
+            nextBtn.className = "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-200 flex items-center gap-2 shadow-md shadow-indigo-100 cursor-pointer";
+        }
+
+        // Próxima Questão
+        function nextQuestion() {
+            if (selectedOptionIndex === null) return;
+
+            studentResponses.push({
+                questionIndex: currentQuestionIndex,
+                selected: selectedOptionIndex,
+                correct: quizQuestions[currentQuestionIndex].correct,
+                isCorrect: selectedOptionIndex === quizQuestions[currentQuestionIndex].correct
+            });
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                submitAndFinishQuiz();
+            }
+        }
+
+        // Concluir Quiz e enviar automaticamente os dados
+        function submitAndFinishQuiz() {
+            document.getElementById('step-quiz').classList.add('hidden');
+            document.getElementById('step-sending').classList.remove('hidden');
+
+            const score = studentResponses.filter(r => r.isCorrect).length;
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            const { txt, validationHash } = buildTextReport();
+
+            // Montar objeto detalhado legível para o corpo do e-mail estruturado do professor
+            let detalhamentoLimpo = studentResponses.map((resp, idx) => {
+                const q = quizQuestions[resp.questionIndex];
+                return `Questão ${idx + 1}: ${resp.isCorrect ? '✅ Acertou' : '❌ Errou'} | Respondido: "${q.options[resp.selected]}" | Correta: "${q.options[resp.correct]}"`;
+            }).join("\n");
+
+            // Chamada de API REST do FormSubmit (Totalmente silencioso e automático)
+            fetch(`https://formsubmit.co/ajax/${TEACHER_EMAIL}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    "Aluno": studentData.name,
+                    "Turma": studentData.class,
+                    "Acertos": `${score} de ${quizQuestions.length}`,
+                    "Aproveitamento": `${percentage}%`,
+                    "Codigo_Autenticacao": validationHash,
+                    "Detalhamento_Respostas": detalhamentoLimpo,
+                    "_subject": `Relatório Quiz Python: ${studentData.name} - Turma: ${studentData.class}`
+                })
+            })
+            .then(res => {
+                renderFinalScreen(score, percentage);
+            })
+            .catch(err => {
+                // Mesmo se houver falha de internet/CORS, renderiza o final para o aluno não travar, alertando que o backup pode ser usado
+                console.error("Falha ao enviar e-mail automatico", err);
+                renderFinalScreen(score, percentage);
+                showModal("Aviso de Conexão", "Não conseguimos confirmar o envio automático por oscilações na rede. Se necessário, use a opção de copiar ou WhatsApp ao final.", "info");
+            });
+        }
+
+        // Mostra a tela de resultados
+        function renderFinalScreen(score, percentage) {
+            document.getElementById('step-sending').classList.add('hidden');
+            document.getElementById('step-result').classList.remove('hidden');
+
+            const iconContainer = document.getElementById('result-icon-container');
+            const icon = document.getElementById('result-icon');
+            const title = document.getElementById('result-title');
+            
+            if (score >= 7) {
+                iconContainer.className = "inline-flex p-4 rounded-full mb-3 bg-emerald-100 text-emerald-600";
+                icon.className = "fa-solid fa-trophy text-4xl";
+                title.innerText = "Parabéns!";
+            } else if (score >= 5) {
+                iconContainer.className = "inline-flex p-4 rounded-full mb-3 bg-yellow-100 text-yellow-600";
+                icon.className = "fa-solid fa-star-half-stroke text-4xl";
+                title.innerText = "Bom Trabalho!";
+            } else {
+                iconContainer.className = "inline-flex p-4 rounded-full mb-3 bg-rose-100 text-rose-600";
+                icon.className = "fa-solid fa-circle-exclamation text-4xl";
+                title.innerText = "Continue Estudando!";
+            }
+
+            document.getElementById('score-text').innerText = `${score} / ${quizQuestions.length}`;
+            document.getElementById('score-percentage').innerText = `Aproveitamento: ${percentage}%`;
+            document.getElementById('student-meta').innerText = `Aluno: ${studentData.name} | Turma: ${studentData.class}`;
+
+            // Renderizar espelho das respostas
+            const detailContainer = document.getElementById('detailed-report');
+            detailContainer.innerHTML = '<h3 class="text-sm font-bold text-slate-700">Resumo de respostas enviadas:</h3>';
+            
+            studentResponses.forEach((resp, idx) => {
+                const q = quizQuestions[resp.questionIndex];
+                const item = document.createElement('div');
+                item.className = `p-3.5 rounded-lg border text-xs ${resp.isCorrect ? 'bg-emerald-50/50 border-emerald-100 text-emerald-800' : 'bg-rose-50/50 border-rose-100 text-rose-800'}`;
+                item.innerHTML = `
+                    <p class="font-bold">Questão ${idx+1}: ${q.question.substring(0, 100)}...</p>
+                    <p class="mt-1">Sua Resposta: <span class="font-semibold">${q.options[resp.selected]}</span> 
+                    (${resp.isCorrect ? 'Acertou' : 'Errou - Correta: ' + q.options[resp.correct]})</p>
+                `;
+                detailContainer.appendChild(item);
+            });
+        }
+
+        function toggleDetailedReport() {
+            const report = document.getElementById('detailed-report');
+            report.classList.toggle('hidden');
+        }
+
+        // Constrói o texto amigável do relatório técnico
+        function buildTextReport() {
+            const score = studentResponses.filter(r => r.isCorrect).length;
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            
+            // Hash simples de segurança anti-fraude
+            const validationHash = btoa(`${studentData.name}|${score}|${studentData.class}|python-senac-secure`).substring(0, 12);
+
+            let txt = `====================================\n`;
+            txt += `RELATÓRIO DE DESEMPENHO - QUIZ PYTHON\n`;
+            txt += `====================================\n\n`;
+            txt += `ALUNO: ${studentData.name}\n`;
+            txt += `TURMA: ${studentData.class}\n`;
+            txt += `PONTUAÇÃO: ${score} de ${quizQuestions.length} acertos (${percentage}%)\n`;
+            txt += `CÓD. VALIDAÇÃO: ${validationHash}\n\n`;
+            txt += `DETALHAMENTO:\n`;
+            
+            studentResponses.forEach((resp, idx) => {
+                txt += `Q${idx+1}: ${resp.isCorrect ? '✅ ACERTOU' : '❌ ERROU'} (Opção respondida: ${String.fromCharCode(65 + resp.selected)})\n`;
+            });
+            
+            txt += `\n====================================`;
+            return { txt, score, validationHash };
+        }
+
+        // Backup de Envio por WhatsApp
+        function sendViaWhatsApp() {
+            const { txt, score } = buildTextReport();
+            const message = `Olá Professor Jociel, finalizei o Quiz de Python!\n\n*Nome:* ${studentData.name}\n*Turma:* ${studentData.class}\n*Pontuação:* ${score}/10\n\n_Copiei meu relatório completo na área de transferência._`;
+            
+            navigator.clipboard.writeText(txt).then(() => {
+                const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            }).catch(() => {
+                showModal("Erro ao Copiar", "Não foi possível copiar o relatório automaticamente. Tente a cópia manual.", "error");
+            });
+        }
+
+        // Backup de cópia para Área de Transferência
+        function copyToClipboard() {
+            const { txt } = buildTextReport();
+            
+            // Usando execCommand caso haja limitações de iFrame ou Navigator API
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = txt;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                showModal("Copiado!", "O relatório completo foi copiado. Você pode colar e mandar ao professor por onde preferir.", "success");
+            } catch (err) {
+                showModal("Erro ao Copiar", "Por favor, selecione e copie o texto manualmente.", "error");
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>
