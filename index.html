@@ -49,7 +49,7 @@
             <h2 class="text-xl font-semibold text-slate-800 mb-2">
                 <i class="fa-solid fa-user-graduate text-indigo-600 mr-2"></i>Área do Aluno
             </h2>
-            <p class="text-slate-500 text-sm mb-6">Por favor, preencha seus dados para iniciar a avaliação. Seu relatório final será enviado automaticamente ao professor Jociel ao finalizar.</p>
+            <p class="text-slate-500 text-sm mb-6">Por favor, preencha seus dados para iniciar a avaliação. Seu relatório final será enviado automaticamente ao Professor Jociel ao finalizar.</p>
             
             <form id="auth-form" onsubmit="startQuiz(event)" class="space-y-4">
                 <div>
@@ -111,7 +111,7 @@
                 <i class="fa-solid fa-paper-plane text-3xl"></i>
             </div>
             <h2 class="text-xl font-bold text-slate-800 mb-2">Enviando suas respostas...</h2>
-            <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6">Por favor, aguarde um instante enquanto salvamos o seu resultado e enviamos o relatório diretamente para o e-mail do professor.</p>
+            <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6">Por favor, aguarde um instante enquanto salvamos o seu resultado e enviamos o relatório diretamente para o Professor Jociel.</p>
             <div class="flex justify-center">
                 <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
             </div>
@@ -132,7 +132,7 @@
                 <i class="fa-solid fa-circle-check text-emerald-600 text-lg mt-0.5"></i>
                 <div>
                     <h4 class="text-sm font-bold">Relatório Enviado Automaticamente!</h4>
-                    <p class="text-xs text-emerald-700 mt-0.5">Sua nota e respostas já foram salvas e enviadas com segurança ao e-mail: <strong class="font-semibold">jociel.6108@df.senac.br</strong>.</p>
+                    <p class="text-xs text-emerald-700 mt-0.5">Sua nota e respostas já foram salvas e enviadas com segurança ao: <strong class="font-semibold">Prof. Jociel</strong>.</p>
                 </div>
             </div>
 
@@ -187,85 +187,89 @@
     </div>
 
     <script>
-        // E-mail do Professor Fixo
-        const TEACHER_EMAIL = "jociel.6108@df.senac.br";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTQ24497FgkTpXaUMChQd1ZCLCvSxdvL7hsDU78dS3HCiPkhFZT2eJDbbO7g1jz9hP3A/exec";
 
         // Banco de Dados do Quiz (10 questões com alternativas)
         const quizQuestions = [
             {
-                question: "Qual das alternativas a seguir apresenta uma atribuição correta e tipicamente usada para uma variável em Python?",
-                options: ["x = 10", "int x = 10;", "let x = 10", "var x := 10"],
+                question: "Considere o seguinte código:<br><img src='./img/q1.png' style='max-width:100%; height:auto;'>Qual será a saída impressa no console?",
+                options: ["Ana", "Carlos", "Beto", "Ana,Beto,Carlos"],
+                correct: 2
+            },
+            {
+                question:  "Analise o seguinte trecho com um laço 'while':<br><img src='./img/q2.png' style='max-width:100%; height:auto;'>Qual valor será exibido na tela?",
+                options: [
+                    "5",
+                    "O programa entrará em um loop infinito.",
+                    "3",
+                    "4"
+                ],
+                correct: 3
+            },
+            {
+                question: "Dada a lista original, o que será impresso no final deste código?<br><img src='./img/q3.png' style='max-width:100%; height:auto;'>",
+                options: ["[]", "[2,4]", "[1,3,5]", "[1,2,3,4,5]"],
+                correct: 1
+            },
+            {
+                question: "Qual é a função da palavra-chave 'break' dentro de um laço de repetição?",
+                options: [
+                    "Interromper e sair imediatamente do laço de repetição.",
+                    "Pausar o código por alguns segundos antes de continuar.", 
+                    "Reiniciar a contagem do laço a partir do início.", 
+                    "Ignorar iteração atual e passar para o próximo passo do loop."
+                ],
+                correct: 3
+            },
+            {
+                question: "Considere o trecho de código abaixo:<br><img src='./img/q5.png' style='max-width:100%; height:auto;'>  Qual será a saída produzida por este código?",
+                options: [
+                    "12",
+                    "1 2 3 4",
+                    "1 2 4",
+                    "3 4"
+                ],
+                correct: 2
+            },
+            {
+                question:"Observe o acumulador multiplicativo a seguir:<br><img src='./img/q6.png' style='max-width:100%; height:auto;'> Qual valor será impresso no final?",
+                options: ["6", "12", "1", "24"],
+                correct: 1
+            },
+            {
+                question:"O que acontece ao rodarmos um laço dentro de outro laço (laço aninhado) como no exemplo abaixo?<br><img src='./img/q7.png' style='max-width:100%; height:auto;'>",
+                options: [
+                    "['a1','b2']",
+                    "['a','b','1','2']",
+                    "['a1','a2','b1','b2']",
+                    "['a2','b1']"
+                ],
+                correct: 2
+            },
+            {
+                question:"Analise a busca linear simulada abaixo:<br><img src='./img/q8.png' style='max-width:100%; height:auto;'> Qual será o resultado lógico impresso?",
+                options: [
+                    "False",
+                    "Carol, Lucas, Mari",
+                    "Lucas",
+                    "True"
+                ],
+                correct: 3
+            },
+            {
+                question:"Acompanhe este cenário dinâmico com laço e redução de recursos:<br><img src='./img/q9.png' style='max-width:100%; height:auto;'> Qual o valor de 'passos' impresso?",
+                options: ["6", "O loop será infinito porque a energia nunca zerá exatamente", "8", "10"],
+                correct: 2
+            },
+            {
+                question: "Quais funções podemos usar respectivamente para: adicionar elemento na lista, remover o último elemento da lista e ordenar a lista em ordem crescente?",
+                options: [
+                    "append(), pop() e sort()",
+                    "add(), remove() e sorted()",
+                    "insert(), len() e order()",
+                    "push(), count() e sum()"
+                ],
                 correct: 0
-            },
-            {
-                question: "Embora Python não tenha constantes nativas protegidas pelo sistema, qual é a convenção adotada pela comunidade para indicar que uma variável deve ser tratada como constante?",
-                options: [
-                    "Usar a palavra-chave 'const' antes do nome da variável.",
-                    "Declarar o nome da variável totalmente em letras maiúsculas (ex: PI = 3.14).",
-                    "Colocar um cifrão ($) na frente do nome.",
-                    "Iniciar o nome com dois sublinhados (ex: __pi = 3.14)."
-                ],
-                correct: 1
-            },
-            {
-                question: "Considere a lista em Python: valores = [10, 20, 30, 40]. Qual comando exibe o número 30?",
-                options: ["print(valores[3])", "print(valores[1])", "print(valores[2])", "print(valores.get(2))"],
-                correct: 2
-            },
-            {
-                question: "Qual é a estrutura correta para testar se uma variável idade é maior ou igual a 18 em Python?",
-                options: ["if (idade >= 18) { }", "if idade >= 18 then", "if [idade >= 18]", "if idade >= 18:"],
-                correct: 3
-            },
-            {
-                question: "O que acontece se a condição do if for falsa e houver um bloco else associado?",
-                options: [
-                    "O programa gera um erro de execução.",
-                    "O código dentro do bloco 'else' será executado.",
-                    "O programa ignora tanto o 'if' quanto o 'else' e para a execução.",
-                    "O bloco 'if' é reavaliado em um laço infinito."
-                ],
-                correct: 1
-            },
-            {
-                question: "Se quisermos verificar múltiplas condições em sequência (ex: se for menor que 10, se for menor que 20, senão...), qual palavra-chave intermediária usamos entre o if e o else?",
-                options: ["else if", "switch", "elif", "otherwise"],
-                correct: 2
-            },
-            {
-                question: "Qual será o resultado da execução do seguinte trecho de código?\n\nfor i in range(3):\n    print(i)",
-                options: [
-                    "Os números 1, 2 e 3 serão impressos em linhas separadas.",
-                    "Os números 0, 1 e 2 serão impressos em linhas separadas.",
-                    "O número 3 será impresso três vezes.",
-                    "O código resultará em um erro porque o tipo não foi definido."
-                ],
-                correct: 1
-            },
-            {
-                question: "Como podemos usar um laço for para percorrer e imprimir cada elemento de uma lista chamada frutas?",
-                options: [
-                    "for (i=0; i<len(frutas); i++):\n    print(frutas[i])",
-                    "foreach frutas as fruta:\n    print(fruta)",
-                    "for i in frutas.length():\n    print(i)",
-                    "for fruta in frutas:\n    print(fruta)"
-                ],
-                correct: 3
-            },
-            {
-                question: "Dado o código abaixo, qual será a saída impressa?\n\nnumeros = [1, 2, 3]\ntotal = 0\nfor n in numeros:\n    total = total + n\nprint(total)",
-                options: ["3", "6", "[1, 2, 3]", "0"],
-                correct: 1
-            },
-            {
-                question: "O que acontece se esquecermos de indentar corretamente o código que está dentro de um bloco if ou de um laço for em Python?",
-                options: [
-                    "O código roda normalmente, pois a indentação é apenas estética.",
-                    "O Python tenta adivinhar o bloco usando chaves invisíveis.",
-                    "O interpretador Python lança um erro do tipo 'IndentationError' e interrompe a execução.",
-                    "O programa entra em loop infinito automaticamente."
-                ],
-                correct: 2
             }
         ];
 
@@ -333,12 +337,12 @@
             
             // Atualizar barra e contadores
             document.getElementById('question-counter').innerText = `Questão ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
-            const percent = Math.round(((currentQuestionIndex) / quizQuestions.length) * 100);
+            const percent = Math.round(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
             document.getElementById('quiz-progress-percent').innerText = `${percent}% Concluído`;
             document.getElementById('progress-bar').style.width = `${percent || 5}%`;
 
             // Renderizar texto da questão
-            document.getElementById('question-text').innerText = currentQuestion.question;
+            document.getElementById('question-text').innerHTML = currentQuestion.question;
 
             // Renderizar alternativas
             const optionsContainer = document.getElementById('options-container');
@@ -417,39 +421,39 @@
             const percentage = Math.round((score / quizQuestions.length) * 100);
             const { txt, validationHash } = buildTextReport();
 
+
             // Montar objeto detalhado legível para o corpo do e-mail estruturado do professor
             let detalhamentoLimpo = studentResponses.map((resp, idx) => {
                 const q = quizQuestions[resp.questionIndex];
                 return `Questão ${idx + 1}: ${resp.isCorrect ? '✅ Acertou' : '❌ Errou'} | Respondido: "${q.options[resp.selected]}" | Correta: "${q.options[resp.correct]}"`;
             }).join("\n");
 
-            // Chamada de API REST do FormSubmit (Totalmente silencioso e automático)
-            fetch(`https://formsubmit.co/ajax/${TEACHER_EMAIL}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    "Aluno": studentData.name,
-                    "Turma": studentData.class,
-                    "Acertos": `${score} de ${quizQuestions.length}`,
-                    "Aproveitamento": `${percentage}%`,
-                    "Codigo_Autenticacao": validationHash,
-                    "Detalhamento_Respostas": detalhamentoLimpo,
-                    "_subject": `Relatório Quiz Python: ${studentData.name} - Turma: ${studentData.class}`
-                })
-            })
-            .then(res => {
-                renderFinalScreen(score, percentage);
-            })
-            .catch(err => {
-                // Mesmo se houver falha de internet/CORS, renderiza o final para o aluno não travar, alertando que o backup pode ser usado
-                console.error("Falha ao enviar e-mail automatico", err);
-                renderFinalScreen(score, percentage);
-                showModal("Aviso de Conexão", "Não conseguimos confirmar o envio automático por oscilações na rede. Se necessário, use a opção de copiar ou WhatsApp ao final.", "info");
+            const studentReport =  JSON.stringify({
+                "Aluno": studentData.name,
+                "Turma": studentData.class,
+                "Acertos": `${score} de ${quizQuestions.length}`,
+                "Aproveitamento": `${percentage}%`,
+                "Codigo_Autenticacao": validationHash,
+                "Detalhamento_Respostas": detalhamentoLimpo
             });
-        }
+            // Chamada de API REST do FormSubmit (Totalmente silencioso e automático)
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: studentReport
+            })
+            .then(() => {
+                    renderFinalScreen(score, percentage);
+                }).catch(err => {
+                    console.error("Falha ao salvar na planilha", err);
+                    renderFinalScreen(score, percentage);
+                    showModal("Aviso de Conexão", "Não conseguimos registrar na planilha. Por garantia, use a opção de Copiar ou WhatsApp abaixo para enviar ao professor.", "info");
+                });
+            
+        } 
 
         // Mostra a tela de resultados
         function renderFinalScreen(score, percentage) {
