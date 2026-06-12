@@ -41,7 +41,7 @@
             
             <h1 class="text-2xl font-bold tracking-tight">Estruturas de Repetição em Python</h1>
             <h2 class=" font-bold tracking-tight">UC 3 : Desenvolver algoritmos </h2>
-            <h2 class=" font-bold tracking-tight">Aula: 29/05/2026 </h2>
+            <h2 class=" font-bold tracking-tight">Aula: 12/06/2026 </h2>
             
             <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas-SENAC DF</p>
         </div>
@@ -194,82 +194,98 @@
         // Banco de Dados do Quiz (10 questões com alternativas)
         const quizQuestions = [
             {
-                question: "Considere o seguinte código:<br><img src='./img/q1.png' style='max-width:100%; height:auto;'>Qual será a saída impressa no console?",
-                options: ["Ana", "Carlos", "Beto", "Ana,Beto,Carlos"],
+                question: "Qual das seguintes estruturas é utilizada para representar uma matriz bidimensional nativa em Python (sem bibliotecas externas)?",
+                options: [
+                    "Uma tupla de dicionários", 
+                    "Um dicionário de tuplas", 
+                    "Uma lista de dicionários", 
+                    "Uma lista de listas"],
+                correct: 3
+            },
+            {
+                question:  "Dado o dicionário dados = {'nome': 'Kiko', 'idade': 20}, qual método é o mais recomendado para obter o valor de uma chave sem correr o risco de lançar um erro KeyError caso a chave não exista?",
+                options: [
+                    "dados.pop('cargo')",
+                    "dados.get('cargo')",
+                    "dados['cargo']",
+                    "dados.find('cargo')"
+                ],
+                correct: 1
+            },
+            {
+                question: "Considere a matriz M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]. Qual comando retorna o número 6?",
+                options: [
+                    "M[2][1]",
+                    "M[1][2]", 
+                    "M[0][2]", 
+                    "M[1][1]"],
+                correct: 1
+            },
+            {
+                question: "Qual método de dicionário é utilizado para retornar uma visão (view object) contendo apenas todas as chaves presentes nele?",
+                options: [
+                    "items()",
+                    "values()", 
+                    "keys()", 
+                    "list()"
+                ],
                 correct: 2
             },
             {
-                question:  "Analise o seguinte trecho com um laço 'while':<br><img src='./img/q2.png' style='max-width:100%; height:auto;'>Qual valor será exibido na tela?",
+                question: "Como podemos atualizar um dicionário existente adicionando novos pares chave-valor ou modificando os valores de chaves já existentes a partir de outro dicionário?",
                 options: [
-                    "5",
-                    "O programa entrará em um loop infinito.",
-                    "3",
-                    "4"
+                    "dicionario.append(novo_dicionario)",
+                    "dicionario.extend(novo_dicionario)",
+                    "dicionario.merge(novo_dicionario)",
+                    "dicionario.update(novo_dicionario)"
                 ],
                 correct: 3
             },
             {
-                question: "Dada a lista original, o que será impresso no final deste código?<br><img src='./img/q3.png' style='max-width:100%; height:auto;'>",
-                options: ["[]", "[2,4]", "[1,3,5]", "[1,2,3,4,5]"],
-                correct: 1
-            },
-            {
-                question: "Qual é a função da palavra-chave 'break' dentro de um laço de repetição?",
+                question:"O que acontece ao tentar executar o código: d = {}  d['tecnologia'] = 'Python'?",
                 options: [
-                    "Interromper e sair imediatamente do laço de repetição.",
-                    "Pausar o código por alguns segundos antes de continuar.", 
-                    "Reiniciar a contagem do laço a partir do início.", 
-                    "Ignorar iteração atual e passar para o próximo passo do loop."
-                ],
+                    "O dicionario cria automaticamente a chave 'tecnologia' com o valor 'Python'", 
+                    "O dicionario lança um erro porque a chave 'tecnologia' não existe", 
+                    "O dicionario permanece vazio porque não é possível adicionar chaves dinamicamente", 
+                    "O dicionario cria a chave 'tecnologia' mas atribui o valor None"],
                 correct: 0
             },
             {
-                question: "Considere o trecho de código abaixo:<br><img src='./img/q5.png' style='max-width:100%; height:auto;'>  Qual será a saída produzida por este código?",
+                question:"for chave, valor in cadastro.items(): print(f'{chave}: {valor}')info = {'Curso':'Sistemas'} exibir_dados(info)",
                 options: [
-                    "12",
-                    "1 2 3 4",
-                    "1 2 4",
-                    "3 4"
-                ],
-                correct: 2
-            },
-            {
-                question:"Observe o acumulador multiplicativo a seguir:<br><img src='./img/q6.png' style='max-width:100%; height:auto;'> Qual valor será impresso no final?",
-                options: ["6", "12", "1", "24"],
-                correct: 1
-            },
-            {
-                question:"O que acontece ao rodarmos um laço dentro de outro laço (laço aninhado) como no exemplo abaixo?<br><img src='./img/q7.png' style='max-width:100%; height:auto;'>",
-                options: [
-                    "['a1','b2']",
-                    "['a','b','1','2']",
-                    "['a1','a2','b1','b2']",
-                    "['a2','b1']"
-                ],
-                correct: 2
-            },
-            {
-                question:"Analise a busca linear simulada abaixo:<br><img src='./img/q8.png' style='max-width:100%; height:auto;'> Qual será o resultado lógico impresso?",
-                options: [
-                    "False",
-                    "Carol, Lucas, Mari",
-                    "Lucas",
-                    "True"
+                    "('Curso', 'Sistemas')",
+                    "('Curso')",
+                    "Erro de Sintaxe no laço for",
+                    "Curso: Sistemas"
                 ],
                 correct: 3
             },
             {
-                question:"Acompanhe este cenário dinâmico com laço e redução de recursos:<br><img src='./img/q9.png' style='max-width:100%; height:auto;'> Qual o valor de 'passos' impresso?",
-                options: ["6", "O loop será infinito porque a energia nunca zerá exatamente", "8", "10"],
+                question:"Para remover uma chave específica de um dicionário e, ao mesmo tempo, capturar ou salvar o valor que estava associado a ela em uma variável, qual método devemos usar?",
+                options: [
+                    "delete()",
+                    "clear()",
+                    "pop()",
+                    "remove()"
+                ],
                 correct: 2
             },
             {
-                question: "Quais funções podemos usar respectivamente para: adicionar elemento na lista, remover o último elemento da lista e ordenar a lista em ordem crescente?",
+                question:"Se quisermos iterar por um dicionário e obter apenas os valores (ignorando completamente as chaves), qual estrutura de repetição é a mais limpa e direta?",
                 options: [
-                    "append(), pop() e sort()",
-                    "add(), remove() e sorted()",
-                    "insert(), len() e order()",
-                    "push(), count() e sum()"
+                    "for k, v in dicionario:", 
+                    "for v in dicionario.values():",
+                    "while v in dicionario:",
+                    "for v in dicionario.keys():"],
+                correct: 1
+            },
+            {
+                question: "Como podemos criar um dicionário vazio em Python de forma válida?",
+                options: [
+                    "d = {}",
+                    "d = []",
+                    "d = ()",
+                    "d = dict()"
                 ],
                 correct: 0
             }
