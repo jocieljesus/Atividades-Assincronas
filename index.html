@@ -40,10 +40,10 @@
             </div>
             
             <h1 class="text-2xl font-bold tracking-tight">Atividade Assíncrona com Python</h1>
-            <h2 class=" font-bold tracking-tight">UC 3 : Desenvolver algoritmos </h2>
-            <h2 class=" font-bold tracking-tight">Aula: 12/06/2026 </h2>
+            <h2 class=" font-bold tracking-tight">UC 2 : Desenvolver sistemas de informação </h2>
+            <h2 class=" font-bold tracking-tight">Aula do dia 19/06/2026 </h2>
             
-            <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas-SENAC DF</p>
+            <p class="text-cyan-100 text-sm mt-1">Transforme-se : Desenvolvedor Front-End -SENAC DF</p>
         </div>
 
         <!-- TELA 1: IDENTIFICAÇÃO (OBRIGATÓRIA) -->
@@ -61,8 +61,8 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Número da Turma *</label>
-                    <input type="text" id="student-class" required placeholder="Ex: 2026.07.18" 
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Número da Turma</label>
+                    <input type="text" id="student-class"  placeholder="Ex: 2026.07.95" 
                            class="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 transition">
                 </div>
 
@@ -193,102 +193,103 @@
 
         // Banco de Dados do Quiz (10 questões com alternativas)
         const quizQuestions = [
-            {
-                question: "Qual das seguintes estruturas é utilizada para representar uma matriz bidimensional nativa em Python (sem bibliotecas externas)?",
+                {
+                question: "Se uma variável for definida assim: x = '10' Qual é o tipo de dado da variável 'x'?",
                 options: [
-                    "Uma tupla de dicionários", 
-                    "Um dicionário de tuplas", 
-                    "Uma lista de dicionários", 
-                    "Uma lista de listas"],
-                correct: 3
-            },
-            {
-                question:  "Dado o dicionário dados = {'nome': 'Kiko', 'idade': 20}, qual método é o mais recomendado para obter o valor de uma chave sem correr o risco de lançar um erro KeyError caso a chave não exista?",
-                options: [
-                    "dados.pop('cargo')",
-                    "dados.get('cargo')",
-                    "dados['cargo']",
-                    "dados.find('cargo')"
+                    "Bool (Booleano)",
+                    "Str (String)",
+                    "Int (Inteiro)",
+                    "Float (Ponto Flutuante)"
                 ],
                 correct: 1
             },
             {
-                question: "Considere a matriz M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]. Qual comando retorna o número 6?",
+                question: " Considere o seguinte trecho de código em uma linguagem baseada em Python: <br><img src='./img/q2.png' style='max-width:100%; height:auto;'> Qual é o valor armazenado na variável 'resultado' após a execução?",
                 options: [
-                    "M[2][1]",
-                    "M[1][2]", 
-                    "M[0][2]", 
-                    "M[1][1]"],
-                correct: 1
-            },
-            {
-                question: "Qual método de dicionário é utilizado para retornar uma visão (view object) contendo apenas todas as chaves presentes nele?",
-                options: [
-                    "items()",
-                    "values()", 
-                    "keys()", 
-                    "list()"
-                ],
+                    "3.333", 
+                    "0", 
+                    "1", 
+                    "3"],
                 correct: 2
             },
             {
-                question: "Como podemos atualizar um dicionário existente adicionando novos pares chave-valor ou modificando os valores de chaves já existentes a partir de outro dicionário?",
+                question:  "Qual das seguintes alternativas apresenta uma definição correta sobre o conceito de 'variável' na programação?",
                 options: [
-                    "dicionario.append(novo_dicionario)",
-                    "dicionario.extend(novo_dicionario)",
-                    "dicionario.merge(novo_dicionario)",
-                    "dicionario.update(novo_dicionario)"
+                    "Um espaço na memória que armazena um valor e pode ser referenciado por um nome",
+                    "Um comando usado exclusivamente para repetir um bloco de código várias vezes",
+                    "Uma função pré-definida que realiza operações matemáticas complexas",
+                    "Um tipo de dado que só pode armazenar números inteiros"
                 ],
-                correct: 3
-            },
-            {
-                question:"O que acontece ao tentar executar o código: d = {}  d['tecnologia'] = 'Python'?",
-                options: [
-                    "O dicionario cria automaticamente a chave 'tecnologia' com o valor 'Python'", 
-                    "O dicionario lança um erro porque a chave 'tecnologia' não existe", 
-                    "O dicionario permanece vazio porque não é possível adicionar chaves dinamicamente", 
-                    "O dicionario cria a chave 'tecnologia' mas atribui o valor None"],
                 correct: 0
             },
             {
-                question:"for chave, valor in cadastro.items(): print(f'{chave}: {valor}')info = {'Curso':'Sistemas'} exibir_dados(info)",
+                question: "Se as variáveis booleanas 'a' e 'b' possuem os valores a = True e b = False, qual será o resultado da expressão lógica: (a or b) and (not b)?",
                 options: [
-                    "('Curso', 'Sistemas')",
-                    "('Curso')",
-                    "Erro de Sintaxe no laço for",
-                    "Curso: Sistemas"
-                ],
-                correct: 3
-            },
-            {
-                question:"Para remover uma chave específica de um dicionário e, ao mesmo tempo, capturar ou salvar o valor que estava associado a ela em uma variável, qual método devemos usar?",
-                options: [
-                    "delete()",
-                    "clear()",
-                    "pop()",
-                    "remove()"
-                ],
-                correct: 2
-            },
-            {
-                question:"Se quisermos iterar por um dicionário e obter apenas os valores (ignorando completamente as chaves), qual estrutura de repetição é a mais limpa e direta?",
-                options: [
-                    "for k, v in dicionario:", 
-                    "for v in dicionario.values():",
-                    "while v in dicionario:",
-                    "for v in dicionario.keys():"],
+                    "Null",
+                    "True", 
+                    "False", 
+                    "Undefined"],
                 correct: 1
             },
             {
-                question: "Como podemos criar um dicionário vazio em Python de forma válida?",
+                question: "Analise o código abaixo: <br><img src='./img/q5.png' style='max-width:100%; height:auto;'> O que será impresso no console?",
                 options: [
-                    "d = {}",
-                    "d = []",
-                    "d = ()",
-                    "d = dict()"
+                    "Acesso Negado",
+                    "Acesso Liberado", 
+                    "Acesso permitido sem restrições",
+                    "Acesso permitido com responsável" 
+                ],
+                correct: 3
+            },
+            {
+                question: "Qual é a principal diferença funcional entre o uso do 'if' e do 'elif' em uma estrutura condicional?",
+                options: [
+                    "O 'if' permite testar uma condição, enquanto o 'elif' é  executado obrigatoriamente se o 'if' for verdadeiro",
+                    "O 'elif' é avaliado apenas se a condição do 'if' for falsa, permitindo testar múltiplas condições sequencialmente",
+                    "O 'if' só aceita operadores matémáticos, enquanto o 'elif' aceita operadores lógicos",
+                    "Não há diferença funcional, ambos são sinônimos e podem ser usados de forma intercambiável"
+                ],
+                correct: 1
+            },
+            {
+                question:"Dado o código abaixo: <br><img src='./img/q6.png' style='max-width:100%; height:auto;'> Se alterarmos o valor da variável 'frequencia' para 70, qual será o resultado impresso? ",
+                options: [
+                    "Nenhum resultado será impresso", 
+                    "Erro de compilação", 
+                    "Aprovado", 
+                    "Retido"],
+                correct: 3
+            },
+            {
+                question:"Qual dos seguintes operadores é utilizado para verificar a igualdade de valor entre duas variáveis na maioria das linguagens de programação (como Python)?",
+                options: [
+                    "==",
+                    "===",
+                    "!=",
+                    "<>"
                 ],
                 correct: 0
+            },
+            {
+                question:"Qual será o valor final da variável 'resultado' após a execução do código a seguir? <br><img src='./img/q9.png' style='max-width:100%; height:auto;'>",
+                options: [
+                    "5",
+                    "True",
+                    "Nulo",
+                    "False"
+                ],
+                correct: 1
+            },
+            {
+                question:"Considere o seguinte cenário de código: <br><img src='./img/q10.png' style='max-width:100%; height:auto;'> A saída desse código será:",
+                options: [
+                    "Maior que 15",
+                    "Menor ou igual a 10",
+                    "Maior que 10",
+                    "Maior e Menor"],
+                correct: 2
             }
+        
         ];
 
         // Estado Global da Aplicação
