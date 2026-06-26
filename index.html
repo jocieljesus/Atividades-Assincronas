@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Atividade Assíncrona-Senac</title>
+    <title> Atividade Assíncrona - Senac</title>
     <!-- Tailwind CSS para um design moderno e limpo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome para ícones amigáveis -->
@@ -36,14 +36,12 @@
         <!-- Cabeçalho Principal -->
         <div class="bg-gradient-to-r from-cyan-700 to-indigo-800 p-6 text-white text-center">
             <div class="inline-flex p-3 bg-white/10 rounded-full mb-3">
-                <i class="fa-brands fa-python text-3xl text-yellow-300"></i>
+                <i class="fa-brands fa-java text-3xl text-yellow-300"></i>
             </div>
             
-            <h1 class="text-2xl font-bold tracking-tight">Atividade Assíncrona com Python</h1>
-            <h2 class=" font-bold tracking-tight">UC 2 : Desenvolver sistemas de informação </h2>
-            <h2 class=" font-bold tracking-tight">Aula do dia 24/06/2026 </h2>
-            
-            <p class="text-cyan-100 text-sm mt-1">Transforme-se : Desenvolvedor Front-End -SENAC DF</p>
+            <h1 class="text-2xl font-bold tracking-tight">POO - Programação Orientada a Objetos ❤️ JAVA ☕</h1>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Aula do dia 26/06/2026</h2>
+            <p class="text-cyan-100 text-sm mt-1">Técnico Em Desenvolvimento de Sistemas -SENAC DF</p>
         </div>
 
         <!-- TELA 1: IDENTIFICAÇÃO (OBRIGATÓRIA) -->
@@ -56,13 +54,13 @@
             <form id="auth-form" onsubmit="startQuiz(event)" class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Seu Nome Completo *</label>
-                    <input type="text" id="student-name" required placeholder="Ex: João Silva de Souza" 
+                    <input type="text" id="student-name" required placeholder="Ex: Frederico Bardón de la Reguera" 
                            class="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 transition">
                 </div>
                 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Número da Turma</label>
-                    <input type="text" id="student-class"  placeholder="Ex: 2026.07.95" 
+                    <input type="text" id="student-class"  placeholder="Ex: 2026.07.18" 
                            class="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-slate-800 transition">
                 </div>
 
@@ -195,118 +193,120 @@
         const quizQuestions = [
             //Questâo 1
                 {
-                question: "Considere o seguinte código em Python: <br><img src='./img/q1.png' style='max-width:100%; height:auto;'> Qual será a saída exibida no console?",
+                question: "O que define uma classe no contexto da Programação Orientada a Objetos em Java?",
                 options: [
-                    "B",
-                    "Ocorrerá um erro de execução",
-                    "Nenhuma saída será exibida",
-                    "A"
+                    "Uma função principal que executa o programa",
+                    "Um molde para criar objetos",
+                    "Uma variável que armazena dados",
+                    "Um espaço na memória para armazenar valores"
                 ],
-                correct: 0
+                correct: 1
             },
             
             //Questâo 2
             {
-                question:"Qual será o resultado impresso pelo código abaixo? <br><img src='./img/q2.png' style='max-width:100%; height:auto;'>",
+                question:"No desenvolvimento de um sistema para uma padaria, qual palavra-chave é utilizada em Java para instanciar (criar) um novo objeto a partir da classe Produto?",
                 options: [
-                    "Bom Ruim", 
-                    "Ruim", 
-                    "Bom", 
-                    "Excelente"],
+                    "create", 
+                    "this", 
+                    "new", 
+                    "class"],
                 correct: 2
             },
             
             //Questâo 3
             {
-                question:  "Quantas vezes a palavra 'Olá' será impressa na tela ao executar o código a seguir? <br><img src='./img/q3.png' style='max-width:100%; height:auto;'>",
+                question:  "Em uma classe Aluno, características como 'nome' e 'matricula' e ações como 'estudar()' representam, respectivamente, quais conceitos da POO?",
                 options: [
-                    "3 vezes",
-                    "4 vezes",
-                    "5 vezes",
-                    "Nenhuma vez"
+                    "Classes e Objetos",
+                    "Construtores e Modificadores",
+                    "Comportamento e Estados",
+                    "Atributos e Métodos"
                 ],
-                correct: 1
+                correct: 3
             },
             
             //Questâo 4
             {
-                question: "Qual será a saída do seguinte código iterando sobre um intervalo com início e fim definidos? <br><img src='./img/q4.png' style='max-width:100%; height:auto;'>",
+                question: "Qual é a principal função de um método construtor em Java?",
                 options: [
-                    "2 3 4 5",
-                    "1 2 3 4", 
-                    "3 4 5", 
-                    "2 3 4"],
-                correct: 3
-            },
-            
-            //Questâo 5
-            {
-                question: "Analisando um laço for com passo definido, qual será o último número impresso? <br><img src='./img/q5.png' style='max-width:100%; height:auto;'>",
-                options: [
-                    "7",
-                    "8", 
-                    "9",
-                    "10" 
+                    "Inicializar os atributos de um objeto",
+                    "Retornar o valor de uma variável",
+                    "Definir o comportamento de um objeto",
+                    "Destruir uma instância de uma classe"
                 ],
                 correct: 0
             },
             
-            //Questâo 6
+            //Questâo 5
             {
-                question: "Qual será o valor final da variável 'contador' logo após o término do laço while? <br><img src='./img/q6.png' style='max-width:100%; height:auto;'>",
+                question: "Dado o código de uma classe chamada Funcionario, qual das opções abaixo representa a assinatura correta de seu construtor padrão (sem parâmetros)?",
                 options: [
-                    "0",
-                    "2",
-                    "3",
-                    "0"
-                ],
-                correct: 2
-            },
-            
-            //Questâo 7
-            {
-                question:"Qual é a função principal do comando 'break' dentro de um laço de repetição ('for' ou 'while')?",
-                options: [
-                    "Pausar o laço temporariamente", 
-                    "Pular a iteração atual e continuar com a próxima", 
-                    "Reiniciar o laço desde o início", 
-                    "Encerrar o laço imediatamente"],
-                correct: 3
-            },
-            
-            //Questâo 8
-            {
-                question:"Analise o seguinte código que utiliza 'for' e 'break': <br><img src='./img/q8.png' style='max-width:100%; height:auto;'> Qual será o resultado impresso na tela? ",
-                options: [
-                    "0124",
-                    "012",
-                    "3",
-                    "01234"
+                    "public constructor Funcionario()",
+                    "public Funcionario()", 
+                    "public void Funcionario()",
+                    "public static Funcionario()" 
                 ],
                 correct: 1
             },
             
-            //Questâo 9
+            //Questâo 6
             {
-                question:"O que acontecerá ao executar o código abaixo contendo um while e um break? <br><img src='./img/q9.png' style='max-width:100%; height:auto;'>",
+                question: "O pilar do encapsulamento na programação orientada a objetos tem como principal objetivo:",
                 options: [
-                    "Imprime 2 e depois para",
-                    "Gera um loop infinito",
-                    "Imprime 5432 e depois para",
-                    "Imprime 54321 e depois para"
+                    "Criar uma relação tipo 'é um' entre classes",
+                    "Herança de características entre classes",
+                    "Definir o comportamento de uma classe",
+                    "Ocultar detalhes internos de uma classe e proteger seus dados, permitindo acesso controlado através de métodos públicos",
+                ],
+                correct: 3
+            },
+            
+            //Questâo 7
+            {
+                question:"Para aplicar corretamente o princípio do encapsulamento em Java, qual modificador de acesso deve ser aplicado, por padrão, aos atributos de uma classe?",
+                options: [
+                    "private", 
+                    "public", 
+                    "protected", 
+                    "void"],
+                correct: 0
+            },
+            
+            //Questâo 8
+            {
+                question:"Considere o atributo privado private double valor; em uma classe Venda. Pela convenção do Java, quais nomes de métodos são os corretos para expor a leitura e a escrita controlada desse atributo?",
+                options: [
+                    "lerValor() e definirValor(double v)",
+                    "retornarValor() e atualizarValor(double v)",
+                    "getValor() e setValor(double v)",
+                    "valor() e valor(double v)"
                 ],
                 correct: 2
             },
             
+            //Questâo 9
+            {
+                question:"Dentro da implementação de um método setter como public void setNome(String nome) { this.nome = nome; }, qual é a função específica da palavra-chave this?",
+                options: [
+                    "Referenciar o objeto atual da classe, diferenciando o atributo nome do parâmetro nome",
+                    "Indicar que o método é estático e não depende de uma instância da classe",
+                    "Permitir que o método seja chamado de forma encadeada em outras chamadas de métodos",
+                    "Garantir que o valor passado como parâmetro seja validado antes de ser atribuído ao atributo"
+                ],
+                correct: 0
+            },
+            
             //Questâo 10
             {
-                question:"Qual será a saída ao combinar um laço 'for' e condições no código abaixo? <br><img src='./img/q10.png' style='max-width:100%; height:auto;'> ",
+                question:"Em uma classe Servidor, existe o método public void iniciarProcesso(). O que a palavra void indica na assinatura deste método?",
                 options: [
-                    "0",
-                    "2",
-                    "4",
-                    "6"],
-                correct: 3
+                    "O método é estático",
+                    "O método não retorna nenhum valor",
+                    "O método é privado",
+                    "O método é público"
+                ],
+                correct: 1
             }
         
         ];
