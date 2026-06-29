@@ -26,6 +26,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .brazil{
+            background: linear-gradient(90deg, #009c3b,#0a31a6, #009c3b)!important;
+        }
+
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
@@ -34,13 +38,13 @@
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-100 transition-all duration-300">
         
         <!-- Cabeçalho Principal -->
-        <div class="bg-gradient-to-r from-cyan-700 to-indigo-800 p-6 text-white text-center">
+        <div class="bg-gradient-to-r from-cyan-700 to-indigo-800 p-6 text-white text-center brazil">
             <div class="inline-flex p-3 bg-white/10 rounded-full mb-3">
                 <i class="fa-brands fa-java text-3xl text-yellow-300"></i>
             </div>
             
             <h1 class="text-2xl font-bold tracking-tight">POO - Programação Orientada a Objetos ❤️ JAVA ☕</h1>
-            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Aula do dia 26/06/2026</h2>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Aula do dia 29/06/2026</h2>
             <p class="text-cyan-100 text-sm mt-1">Técnico Em Desenvolvimento de Sistemas -SENAC DF</p>
         </div>
 
@@ -66,7 +70,7 @@
 
                 <div class="pt-4">
                     <button type="submit" 
-                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-md shadow-indigo-100">
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-md shadow-indigo-100 brazil">
                         Começar Avaliação <i class="fa-solid fa-arrow-right text-sm"></i>
                     </button>
                 </div>
@@ -99,7 +103,7 @@
             <!-- Navegação -->
             <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
                 <button id="next-btn" onclick="nextQuestion()" disabled
-                        class="bg-slate-300 text-slate-500 cursor-not-allowed font-semibold py-2.5 px-6 rounded-lg transition duration-200 flex items-center gap-2">
+                        class="bg-slate-300 text-slate-500 cursor-not-allowed font-semibold py-2.5 px-6 rounded-lg transition duration-200 flex items-center gap-2 brazil">
                     Próxima Questão <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
             </div>
@@ -193,120 +197,120 @@
         const quizQuestions = [
             //Questâo 1
                 {
-                question: "O que define uma classe no contexto da Programação Orientada a Objetos em Java?",
+                question: "O que representam os 'atributos' de uma classe em Programação Orientada a Objetos?",
                 options: [
-                    "Uma função principal que executa o programa",
-                    "Um molde para criar objetos",
-                    "Uma variável que armazena dados",
-                    "Um espaço na memória para armazenar valores"
+                    "Os modificadores de acesso da classe",
+                    "As variáveis que armazenam o estado e as características do objetos",
+                    "As ações ou comportamentos que um objeto pode realizar+",
+                    "Os metódos construtores da classe"
                 ],
                 correct: 1
             },
             
             //Questâo 2
             {
-                question:"No desenvolvimento de um sistema para uma padaria, qual palavra-chave é utilizada em Java para instanciar (criar) um novo objeto a partir da classe Produto?",
+                question:"Se um atributo de uma classe for declarado como private, quem pode acessá-lo diretamente?",
                 options: [
-                    "create", 
-                    "this", 
-                    "new", 
-                    "class"],
-                correct: 2
+                    "Apenas os métodos da própria classe", 
+                    "Apenas as classes filhas (subclasses)", 
+                    "Qualquer classe dentro do mesmo pacote", 
+                    "Qualquer classe em qualquer pacote"],
+                correct: 0
             },
             
             //Questâo 3
             {
-                question:  "Em uma classe Aluno, características como 'nome' e 'matricula' e ações como 'estudar()' representam, respectivamente, quais conceitos da POO?",
+                question:  "Qual é a função principal de um método 'getter' (ex: getNome()) em uma classe Java?",
                 options: [
-                    "Classes e Objetos",
-                    "Construtores e Modificadores",
-                    "Comportamento e Estados",
-                    "Atributos e Métodos"
+                    "Criar uma nova instância da classe",
+                    "Definir o valor de um atributo privado",
+                    "Exibir informações sobre o objeto",
+                    "Recuperar e retornar o valor de um atributo privado"
                 ],
                 correct: 3
             },
             
             //Questâo 4
             {
-                question: "Qual é a principal função de um método construtor em Java?",
+                question: "Qual é a função principal de um método 'setter' (ex: setIdade(int idade)) em uma classe Java?",
                 options: [
-                    "Inicializar os atributos de um objeto",
-                    "Retornar o valor de uma variável",
-                    "Definir o comportamento de um objeto",
-                    "Destruir uma instância de uma classe"
+                    "Atribuir um valor a um atributo privado da classe",
+                    "Tornar um atributo público",
+                    "Recuperar o valor de um atributo privado", 
+                    "Declarar um novo atributo na classe"
                 ],
                 correct: 0
             },
             
             //Questâo 5
             {
-                question: "Dado o código de uma classe chamada Funcionario, qual das opções abaixo representa a assinatura correta de seu construtor padrão (sem parâmetros)?",
+                question: "O modificador de acesso public permite que um método ou atributo seja acessado de onde?",
                 options: [
-                    "public constructor Funcionario()",
-                    "public Funcionario()", 
-                    "public void Funcionario()",
-                    "public static Funcionario()" 
+                    "Apenas dentro da própria classe",
+                    "Em qualquer lugar do programa",
+                    "Apenas em subclasses",
+                    "Somente em pacotes diferentes"
                 ],
                 correct: 1
             },
             
             //Questâo 6
             {
-                question: "O pilar do encapsulamento na programação orientada a objetos tem como principal objetivo:",
+                question: "Qual operador é utilizado em Java para acessar um método público ou um atributo de uma instância (objeto)?",
                 options: [
-                    "Criar uma relação tipo 'é um' entre classes",
-                    "Herança de características entre classes",
-                    "Definir o comportamento de uma classe",
-                    "Ocultar detalhes internos de uma classe e proteger seus dados, permitindo acesso controlado através de métodos públicos",
+                    "O ponto (.)",
+                    "O asterisco (*)",
+                    "O sinal de igual (=)",
+                    "O sinal de mais (+)"
                 ],
-                correct: 3
+                correct: 0
             },
             
             //Questâo 7
             {
-                question:"Para aplicar corretamente o princípio do encapsulamento em Java, qual modificador de acesso deve ser aplicado, por padrão, aos atributos de uma classe?",
+                question:"Uma prática comum e recomendada em Java é manter os atributos como private e criar métodos public get e public set para controlá-los. Como se chama esse importante princípio da Orientação a Objetos?",
                 options: [
-                    "private", 
-                    "public", 
-                    "protected", 
-                    "void"],
+                    "Encapsulamento", 
+                    "Herança", 
+                    "Polimorfismo", 
+                    "Abstração"],
                 correct: 0
             },
             
             //Questâo 8
             {
-                question:"Considere o atributo privado private double valor; em uma classe Venda. Pela convenção do Java, quais nomes de métodos são os corretos para expor a leitura e a escrita controlada desse atributo?",
+                question:"Qual é a melhor analogia do mundo real para explicar a relação entre uma 'Classe' e um 'Objeto' (Instância)?",
                 options: [
-                    "lerValor() e definirValor(double v)",
-                    "retornarValor() e atualizarValor(double v)",
-                    "getValor() e setValor(double v)",
-                    "valor() e valor(double v)"
+                    "A classe é o motor e o objeto é o pneu do carro",
+                    "A classe é uma variável e o objeto é uma constante",
+                    "A classe é um livro e o objeto é a capa do livro",
+                    "A classe é a planta de uma casa e o objeto é a casa construída a partir dessa planta"
                 ],
-                correct: 2
+                correct: 3
             },
             
             //Questâo 9
             {
-                question:"Dentro da implementação de um método setter como public void setNome(String nome) { this.nome = nome; }, qual é a função específica da palavra-chave this?",
+                question:"Se um método precisa realizar um cálculo matemático e devolver o resultado (por exemplo, um número inteiro) para quem o chamou, como a sua declaração deve ser diferente de um método void?",
                 options: [
-                    "Referenciar o objeto atual da classe, diferenciando o atributo nome do parâmetro nome",
-                    "Indicar que o método é estático e não depende de uma instância da classe",
-                    "Permitir que o método seja chamado de forma encadeada em outras chamadas de métodos",
-                    "Garantir que o valor passado como parâmetro seja validado antes de ser atribuído ao atributo"
+                    "Não é possível retornar valores de métodos em Java",
+                    "A palavra-chave void deve ser substituída pelo tipo de dado que será retornado (ex: int, double, String)",
+                    "O método deve ser declarado como private para poder retornar valores",
+                    "O método deve receber um parâmetro do tipo void para poder retornar valores"
                 ],
-                correct: 0
+                correct: 1
             },
             
             //Questâo 10
             {
-                question:"Em uma classe Servidor, existe o método public void iniciarProcesso(). O que a palavra void indica na assinatura deste método?",
+                question:"Se instanciar dois objetos diferentes da mesma classe ContaBancaria (ex: conta1 e conta2), o que acontece se alterar o atributo saldo da conta1 usando um método setter?",
                 options: [
-                    "O método é estático",
-                    "O método não retorna nenhum valor",
-                    "O método é privado",
-                    "O método é público"
+                    "O programa apresentará um erro de compilação, pois não é possível alterar atributos de objetos diferentes",
+                    "O saldo da conta2 também será alterado automaticamente, pois ambos compartilham o mesmo atributo",
+                    "O saldo só muda se a classe ContaBancaria for declarada como static",
+                    "Apenas o saldo da conta1 será alterado, pois cada objeto mantém seu próprio estado e atributos independentes"
                 ],
-                correct: 1
+                correct: 3
             }
         
         ];
