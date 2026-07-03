@@ -44,7 +44,7 @@
             </div>
             
             <h1 class="text-2xl font-bold tracking-tight">POO - Programação Orientada a Objetos ❤️ JAVA ☕</h1>
-            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Recuperação 02/06/2026</h2>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Aula dia 03/07/2026</h2>
             <p class="text-cyan-100 text-sm mt-1">Técnico Em Desenvolvimento de Sistemas -SENAC DF</p>
         </div>
 
@@ -193,126 +193,116 @@
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTQ24497FgkTpXaUMChQd1ZCLCvSxdvL7hsDU78dS3HCiPkhFZT2eJDbbO7g1jz9hP3A/exec";
 
+ 
         // Banco de Dados do Quiz (10 questões com alternativas)
-        const quizQuestions = [
-            //Questâo 1
-                {
-                question: "O que representam os 'atributos' de uma classe em Programação Orientada a Objetos?",
-                options: [
-                    "Os modificadores de acesso da classe",
-                    "As variáveis que armazenam o estado e as características do objetos",
-                    "As ações ou comportamentos que um objeto pode realizar+",
-                    "Os metódos construtores da classe"
-                ],
-                correct: 1
-            },
-            
-            //Questâo 2
+            const quizQuestions = [
             {
-                question:"Se um atributo de uma classe for declarado como private, quem pode acessá-lo diretamente?",
+                question: "Qual pilar da Programação Orientada a Objetos é implementado principalmente através do uso de modificadores de acesso (como private e public) e métodos getters e setters?",
                 options: [
-                    "Apenas os métodos da própria classe", 
-                    "Apenas as classes filhas (subclasses)", 
-                    "Qualquer classe dentro do mesmo pacote", 
-                    "Qualquer classe em qualquer pacote"],
-                correct: 0
-            },
-            
-            //Questâo 3
-            {
-                question:  "Qual é a função principal de um método 'getter' (ex: getNome()) em uma classe Java?",
-                options: [
-                    "Criar uma nova instância da classe",
-                    "Definir o valor de um atributo privado",
-                    "Exibir informações sobre o objeto",
-                    "Recuperar e retornar o valor de um atributo privado"
-                ],
-                correct: 3
-            },
-            
-            //Questâo 4
-            {
-                question: "Qual é a função principal de um método 'setter' (ex: setIdade(int idade)) em uma classe Java?",
-                options: [
-                    "Atribuir um valor a um atributo privado da classe",
-                    "Tornar um atributo público",
-                    "Recuperar o valor de um atributo privado", 
-                    "Declarar um novo atributo na classe"
-                ],
-                correct: 0
-            },
-            
-            //Questâo 5
-            {
-                question: "O modificador de acesso public permite que um método ou atributo seja acessado de onde?",
-                options: [
-                    "Apenas dentro da própria classe",
-                    "Em qualquer lugar do programa",
-                    "Apenas em subclasses",
-                    "Somente em pacotes diferentes"
-                ],
-                correct: 1
-            },
-            
-            //Questâo 6
-            {
-                question: "Qual operador é utilizado em Java para acessar um método público ou um atributo de uma instância (objeto)?",
-                options: [
-                    "O ponto (.)",
-                    "O asterisco (*)",
-                    "O sinal de igual (=)",
-                    "O sinal de mais (+)"
-                ],
-                correct: 0
-            },
-            
-            //Questâo 7
-            {
-                question:"Uma prática comum e recomendada em Java é manter os atributos como private e criar métodos public get e public set para controlá-los. Como se chama esse importante princípio da Orientação a Objetos?",
-                options: [
-                    "Encapsulamento", 
                     "Herança", 
                     "Polimorfismo", 
-                    "Abstração"],
-                correct: 0
-            },
-            
-            //Questâo 8
-            {
-                question:"Qual é a melhor analogia do mundo real para explicar a relação entre uma 'Classe' e um 'Objeto' (Instância)?",
-                options: [
-                    "A classe é o motor e o objeto é o pneu do carro",
-                    "A classe é uma variável e o objeto é uma constante",
-                    "A classe é um livro e o objeto é a capa do livro",
-                    "A classe é a planta de uma casa e o objeto é a casa construída a partir dessa planta"
+                    "Abstração",
+                    "Encapsulamento" 
                 ],
                 correct: 3
             },
-            
-            //Questâo 9
+            //Questâo 02
             {
-                question:"Se um método precisa realizar um cálculo matemático e devolver o resultado (por exemplo, um número inteiro) para quem o chamou, como a sua declaração deve ser diferente de um método void?",
+                question:  "Em Java, qual palavra-chave é utilizada na assinatura de uma classe para indicar que ela está herdando as características de outra classe?",
                 options: [
-                    "Não é possível retornar valores de métodos em Java",
-                    "A palavra-chave void deve ser substituída pelo tipo de dado que será retornado (ex: int, double, String)",
-                    "O método deve ser declarado como private para poder retornar valores",
-                    "O método deve receber um parâmetro do tipo void para poder retornar valores"
+                    "super",
+                    "this",
+                    "implements",
+                    "extends"
                 ],
-                correct: 1
+                correct: 3
             },
-            
-            //Questâo 10
+            //Questâo 03
             {
-                question:"Se instanciar dois objetos diferentes da mesma classe ContaBancaria (ex: conta1 e conta2), o que acontece se alterar o atributo saldo da conta1 usando um método setter?",
+                question: "Considere o seguinte cenário: você tem uma classe abstrata Animal com um método emitirSom(). Duas subclasses, Cachorro e Gato, implementam esse método de maneiras diferentes. Quando chamamos animal.emitirSom(), o comportamento real depende do objeto instanciado. Este é um exemplo clássico de:",
                 options: [
-                    "O programa apresentará um erro de compilação, pois não é possível alterar atributos de objetos diferentes",
-                    "O saldo da conta2 também será alterado automaticamente, pois ambos compartilham o mesmo atributo",
-                    "O saldo só muda se a classe ContaBancaria for declarada como static",
-                    "Apenas o saldo da conta1 será alterado, pois cada objeto mantém seu próprio estado e atributos independentes"
+                    "Herança", 
+                    "Encapsulamento", 
+                    "Abstração",
+                    "Polimorfismo"
+                ],
+                correct: 3
+            },
+            //Questâo 04
+            {
+                question: "Qual anotação opcional (mas altamente recomendada) inserimos logo acima de um método na subclasse para avisar ao compilador que estamos substituindo um comportamento herdado da superclasse?",
+                options: [
+                    "@Encapsulate",
+                    "@Abstract",
+                    "@Overload",
+                    "@Override"
+                ],
+                correct: 3
+            },
+            //Questâo 05
+            {
+                question: "Em Java, qual modificador de acesso é utilizado na declaração de uma classe para impedir que ela seja instanciada diretamente (ou seja, não permite fazer new Classe())?",
+                options: [
+                    "static",
+                    "final",
+                    "private",
+                    "abstract"
+                ],
+                correct: 3
+            },
+            //Questâo 06
+            {
+                question:"Quando criamos um método em uma classe filha com a mesma assinatura de um método da classe mãe, estamos fazendo um @Override. Qual é o nome desse conceito em português?",
+                options: [
+                    "Sobrecarga de métodos", 
+                    "Polimorfismo de métodos", 
+                    "Encapsulamento de métodos", 
+                    "Sobrescrita de métodos"],
+                correct: 3
+            },
+            //Questâo 07
+            {
+                question:"Se uma classe Carro foi criada usando a sintaxe public class Carro extends Veiculo, como chamamos formalmente a classe Veiculo",
+                options: [
+                    "Atributo Encapsulado da classe Carro",
+                    "Subclasse ou classe filha da classe Carro",
+                    "Interface implementada pela classe Carro",    
+                    "Superclasse ou classe pai da classe Carro"
+                ],
+                correct: 3
+            },
+            //Questâo 08
+            {
+                question:"A herança em Java promove o reúso de código, mas possui uma limitação estrutural importante sobre classes. Que limitação é essa?",
+                options: [
+                    "Classes que possuem métodos privados não podem ser herdadas.",
+                    "Uma classe só pode herdar de no máximo três subclasses",
+                    "Uma subclasse é proíbida de adicionar novos métodos ou atributos além dos herdados.",
+                    "Java permite apenas herança simples, ou seja, uma classe só pode estender uma única classe pai diretamente."
+                ],
+                correct: 3
+            },
+            //Questâo 09
+            {
+                question:"Quando uma subclasse deseja invocar explicitamente o construtor da sua superclasse para garantir que a inicialização básica do 'pai' aconteça, qual instrução deve ser usada obrigatoriamente na primeira linha do construtor do 'filho'?",
+                options: [
+                    "parent();", 
+                    "extends();",  
+                    "this();",
+                    "super();"
+                ],
+                correct: 3
+            },//Questâo 10
+            {
+                question: "Qual é o principal objetivo prático do pilar da Herança na programação orientada a objetos?",
+                options: [
+                    "Esconder os detalhes complexos de funcionamento de um banco de dados",
+                    "Garantir que a aplicação seja executada em múltiplos sistemas operacionais",
+                    "Impedir que objetos possam reutilizar classes",
+                    "Permitir reaproveitamento de código e criação de hierarquias de classes, onde subclasses podem herdar atributos e métodos de classes pai."
                 ],
                 correct: 3
             }
-        
         ];
 
         // Estado Global da Aplicação
