@@ -26,9 +26,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .brazil{
-            background: linear-gradient(90deg, #009c3b,#0a31a6, #009c3b)!important;
-        }
 
     </style>
 </head>
@@ -43,9 +40,10 @@
                 <i class="fa-brands fa-java text-3xl text-yellow-300"></i>
             </div>
             
-            <h1 class="text-2xl font-bold tracking-tight">POO - Programação Orientada a Objetos ❤️ JAVA ☕</h1>
-            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 4 - Aula dia 03/07/2026</h2>
-            <p class="text-cyan-100 text-sm mt-1">Técnico Em Desenvolvimento de Sistemas -SENAC DF</p>
+            <h1 class="text-2xl font-bold tracking-tight">Desenvolver aplicações Desktop ❤️ JAVAFX ☕</h1>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona UC 5 - Aula dia 24/07/2026</h2>
+            <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas -SENAC DF</p>
+            <p class="text-cyan-100 text-sm mt-1">Professor Jociel </p>
         </div>
 
         <!-- TELA 1: IDENTIFICAÇÃO (OBRIGATÓRIA) -->
@@ -197,112 +195,117 @@
         // Banco de Dados do Quiz (10 questões com alternativas)
             const quizQuestions = [
             {
-                question: "Qual pilar da Programação Orientada a Objetos é implementado principalmente através do uso de modificadores de acesso (como private e public) e métodos getters e setters?",
+                question: "Para fazer uma aplicação JavaFX rodar, qual classe ela precisa estender?",
                 options: [
-                    "Herança", 
-                    "Polimorfismo", 
-                    "Abstração",
-                    "Encapsulamento" 
+                    "Application", 
+                    "Scene", 
+                    "Controller",
+                    "Stage" 
                 ],
-                correct: 3
+                correct: 0
             },
             //Questâo 02
             {
-                question:  "Em Java, qual palavra-chave é utilizada na assinatura de uma classe para indicar que ela está herdando as características de outra classe?",
+                question:  "No Scene Builder, qual propriedade deve ser preenchida para que um componente (como um botão) possa ser referenciado no código Java Controller?",
                 options: [
-                    "super",
-                    "this",
-                    "implements",
-                    "extends"
+                    "Prompt Text",
+                    "fx:id",
+                    "CSS ID",
+                    "fx:nome"
                 ],
-                correct: 3
+                correct: 1
             },
             //Questâo 03
             {
-                question: "Considere o seguinte cenário: você tem uma classe abstrata Animal com um método emitirSom(). Duas subclasses, Cachorro e Gato, implementam esse método de maneiras diferentes. Quando chamamos animal.emitirSom(), o comportamento real depende do objeto instanciado. Este é um exemplo clássico de:",
+                question: "Qual anotação é obrigatória no Java Controller para indicar que um atributo ou método pertence a um arquivo FXML?",
                 options: [
-                    "Herança", 
-                    "Encapsulamento", 
-                    "Abstração",
-                    "Polimorfismo"
+                    "@Interface", 
+                    "@Override", 
+                    "@FXML",
+                    "@Controller"
                 ],
-                correct: 3
+                correct: 2
             },
             //Questâo 04
             {
-                question: "Qual anotação opcional (mas altamente recomendada) inserimos logo acima de um método na subclasse para avisar ao compilador que estamos substituindo um comportamento herdado da superclasse?",
+                question: "Qual componente do JavaFX é o mais indicado para exibir uma lista de produtos em formato de colunas e linhas, como em um sistema de estoque?",
                 options: [
-                    "@Encapsulate",
-                    "@Abstract",
-                    "@Overload",
-                    "@Override"
+                    "ListView",
+                    "ComboBox",
+                    "ScrollPane",
+                    "TableView"
                 ],
                 correct: 3
             },
             //Questâo 05
             {
-                question: "Em Java, qual modificador de acesso é utilizado na declaração de uma classe para impedir que ela seja instanciada diretamente (ou seja, não permite fazer new Classe())?",
+                question: "Como se obtém o texto digitado pelo usuário em um componente 'TextField' no código Java?",
                 options: [
-                    "static",
-                    "final",
-                    "private",
-                    "abstract"
+                    "campoTexto.getText()",
+                    "campoTexto.texto()",
+                    "campoTexto.getValue()",
+                    "campoTexto.getInput()"
                 ],
-                correct: 3
+                correct: 0
             },
             //Questâo 06
             {
-                question:"Quando criamos um método em uma classe filha com a mesma assinatura de um método da classe mãe, estamos fazendo um @Override. Qual é o nome desse conceito em português?",
+                question:"Qual classe é utilizada para carregar dinamicamente um arquivo FXML e gerar a hierarquia de objetos da interface?",
                 options: [
-                    "Sobrecarga de métodos", 
-                    "Polimorfismo de métodos", 
-                    "Encapsulamento de métodos", 
-                    "Sobrescrita de métodos"],
-                correct: 3
+                    "SceneCreator", 
+                    "FXMLLoader", 
+                    "ViewBuilder", 
+                    "StageLoader"],
+                correct: 1
             },
             //Questâo 07
             {
-                question:"Se uma classe Carro foi criada usando a sintaxe public class Carro extends Veiculo, como chamamos formalmente a classe Veiculo",
+                question:"No contexto do Scene Builder, qual 'Pane' permite posicionar componentes em coordenadas fixas através de âncoras (Top, Bottom, Left, Right)?",
                 options: [
-                    "Atributo Encapsulado da classe Carro",
-                    "Subclasse ou classe filha da classe Carro",
-                    "Interface implementada pela classe Carro",    
-                    "Superclasse ou classe pai da classe Carro"
+                    "VBox",
+                    "HBox",
+                    "AnchorPane",    
+                    "StackPane"
                 ],
-                correct: 3
+                correct: 2
             },
+
             //Questâo 08
-            {
-                question:"A herança em Java promove o reúso de código, mas possui uma limitação estrutural importante sobre classes. Que limitação é essa?",
+
+                {
+                question: "Ao trabalhar com formulários no Scene Builder, qual evento do Button deve ser configurado na aba Code para associar o clique do usuário a um método no Java Controller?",
                 options: [
-                    "Classes que possuem métodos privados não podem ser herdadas.",
-                    "Uma classe só pode herdar de no máximo três subclasses",
-                    "Uma subclasse é proíbida de adicionar novos métodos ou atributos além dos herdados.",
-                    "Java permite apenas herança simples, ou seja, uma classe só pode estender uma única classe pai diretamente."
+                    "fx:id",
+                    "onKeyPressed",
+                    "onSelect",
+                    "onAction"
                 ],
                 correct: 3
             },
             //Questâo 09
             {
-                question:"Quando uma subclasse deseja invocar explicitamente o construtor da sua superclasse para garantir que a inicialização básica do 'pai' aconteça, qual instrução deve ser usada obrigatoriamente na primeira linha do construtor do 'filho'?",
+                question:"Qual método do Controller deve ser vinculado no Scene Builder no campo 'On Action' de um botão para disparar uma funcionalidade?",
                 options: [
-                    "parent();", 
-                    "extends();",  
-                    "this();",
-                    "super();"
+                
+                    "Um método anotado com @FXML",
+                    "O método main()",
+                    "Uma construtor de classe",
+                    "O método initialize()"
                 ],
-                correct: 3
-            },//Questâo 10
+                correct: 0
+            },
+            //Questâo 10
             {
-                question: "Qual é o principal objetivo prático do pilar da Herança na programação orientada a objetos?",
+                question:"O que acontece se você definir um 'onAction' no Scene Builder mas esquecer de criar o método correspondente no Controller Java?",
                 options: [
-                    "Esconder os detalhes complexos de funcionamento de um banco de dados",
-                    "Garantir que a aplicação seja executada em múltiplos sistemas operacionais",
-                    "Impedir que objetos possam reutilizar classes",
-                    "Permitir reaproveitamento de código e criação de hierarquias de classes, onde subclasses podem herdar atributos e métodos de classes pai."
+                    "O JavaFX ignora o evento e não faz nada",  
+                    "O programa gera um erro ao carregar o FXML", 
+                    "O Scene Builder cria automaticamente o método no Controller",
+                    "O componente não será exibido na interface"
                 ],
-                correct: 3
+                correct: 1
             }
+        
         ];
 
         // Estado Global da Aplicação
@@ -427,7 +430,7 @@
         // Próxima Questão
         function nextQuestion() {
             if (selectedOptionIndex === null) return;
-
+    
             studentResponses.push({
                 questionIndex: currentQuestionIndex,
                 selected: selectedOptionIndex,
@@ -436,7 +439,7 @@
             });
 
             currentQuestionIndex++;
-
+            
             if (currentQuestionIndex < quizQuestions.length) {
                 loadQuestion();
             } else {
