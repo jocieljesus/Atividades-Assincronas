@@ -41,7 +41,7 @@
             </div>
             
             <h1 class="text-2xl font-bold tracking-tight">Desenvolver Aplicações Desktop ❤️ JAVAFX ☕</h1>
-            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona 24/07/2026</h2>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona 31/07/2026</h2>
             <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas -SENAC DF</p>
             <p class="text-cyan-100 text-sm mt-1">Professor Jociel </p>
         </div>
@@ -195,113 +195,114 @@
         // Banco de Dados do Quiz (10 questões com alternativas)
             const quizQuestions = [
             {
-                question: "Para fazer uma aplicação JavaFX rodar, qual classe ela precisa estender?",
+                question: "Qual é a extensão de arquivo utilizada pelo Scene Builder para salvar o design da interface gráfica?",
                 options: [
-                    "Application", 
-                    "Scene", 
-                    "Controller",
-                    "Stage" 
+                    ".java", 
+                    ".fxml", 
+                    ".css",
+                    ".javafx" 
                 ],
-                correct: 0
+                correct: 1
             },
             //Questâo 02
             {
-                question:  "No Scene Builder, qual propriedade deve ser preenchida para que um componente (como um botão) possa ser referenciado no código Java Controller?",
+                question:  "Em um sistema de estoque, qual componente do JavaFX é o mais adequado para listar vários produtos em colunas como 'Nome', 'Quantidade' e 'Preço'?",
                 options: [
-                    "Prompt Text",
-                    "fx:id",
-                    "CSS ID",
-                    "fx:nome"
+                    "TextArea",
+                    "TableView",
+                    "TablePane",
+                    "ListView"
                 ],
                 correct: 1
             },
             //Questâo 03
             {
-                question: "Qual anotação é obrigatória no Java Controller para indicar que um atributo ou método pertence a um arquivo FXML?",
+                question: "No padrão MVC utilizado pelo JavaFX, qual é a função principal da classe 'Controller'?",
                 options: [
-                    "@Interface", 
-                    "@Override", 
-                    "@FXML",
-                    "@Controller"
+                    "Armazenar o banco de dados", 
+                    "Gerenciar a lógica de interação.", 
+                    "Compilar o projeto inteiro",
+                    "Desenhar a tela do usuário"
                 ],
-                correct: 2
+                correct: 1
             },
             //Questâo 04
             {
-                question: "Qual componente do JavaFX é o mais indicado para exibir uma lista de produtos em formato de colunas e linhas, como em um sistema de estoque?",
+                question: "Qual componente de layout do Scene Builder organiza os elementos automaticamente em uma única coluna vertical?",
                 options: [
-                    "ListView",
-                    "ComboBox",
-                    "ScrollPane",
-                    "TableView"
+                    "AnchorPane",
+                    "VBox",
+                    "HBox",
+                    "StackPane"
                 ],
-                correct: 3
+                correct: 1
             },
             //Questâo 05
             {
-                question: "Como se obtém o texto digitado pelo usuário em um componente 'TextField' no código Java?",
+                question: "Para que uma TableView no JavaFX reflita automaticamente adições ou remoções de produtos no estoque, qual tipo de lista deve ser usada no Controller?",
                 options: [
-                    "campoTexto.getText()",
-                    "campoTexto.texto()",
-                    "campoTexto.getValue()",
-                    "campoTexto.getInput()"
+                    "LinkedList",
+                    "ObservableList",
+                    "Vector",
+                    "ArrayList"
                 ],
-                correct: 0
+                correct: 1
             },
             //Questâo 06
             {
-                question:"Qual classe é utilizada para carregar dinamicamente um arquivo FXML e gerar a hierarquia de objetos da interface?",
+                question:"No Scene Builder, onde você define o ID que será usado para referenciar um botão no código Java?",
                 options: [
-                    "SceneCreator", 
-                    "FXMLLoader", 
-                    "ViewBuilder", 
-                    "StageLoader"],
+                    "Menu Style", 
+                    "Campo fx:id", 
+                    "No arquivo css", 
+                    "Propriedade Text"
+                ],
                 correct: 1
             },
             //Questâo 07
             {
-                question:"No contexto do Scene Builder, qual 'Pane' permite posicionar componentes em coordenadas fixas através de âncoras (Top, Bottom, Left, Right)?",
+                question:"Qual método é automaticamente chamado pelo JavaFX assim que o arquivo FXML termina de ser carregado, sendo ideal para popular uma tabela de estoque?",
                 options: [
-                    "VBox",
-                    "HBox",
-                    "AnchorPane",    
-                    "StackPane"
+                    "contructor()",
+                    "initialize()",
+                    "main()",    
+                    "start()"
                 ],
-                correct: 2
+                correct: 1
             },
 
             //Questâo 08
 
                 {
-                question: "Ao trabalhar com formulários no Scene Builder, qual evento do Button deve ser configurado na aba Code para associar o clique do usuário a um método no Java Controller?",
+                question: "Como se chama a ação de linkar um arquivo CSS para o Scene Builder para alterar a aparência do sistema de estoque?",
                 options: [
-                    "fx:id",
-                    "onKeyPressed",
-                    "onSelect",
-                    "onAction"
+                    "Compilação visual",
+                    "Estilização via CSS",
+                    "Injeção de dependência",
+                    "Binding de dados"
                 ],
-                correct: 3
+                correct: 1
             },
             //Questâo 09
             {
-                question:"Qual método do Controller deve ser vinculado no Scene Builder no campo 'On Action' de um botão para disparar uma funcionalidade?",
+                question:"Se o usuário clicar no botão 'Adicionar' sem digitar o nome do produto, você quer exibir um alerta. Qual classe JavaFX é usada para isso?",
                 options: [
                 
-                    "Um método anotado com @FXML",
-                    "O método main()",
-                    "Uma construtor de classe",
-                    "O método initialize()"
+                    "Pane",
+                    "Alert",
+                    "Stage",
+                    "Scene"
                 ],
-                correct: 0
+                correct: 1
             },
             //Questâo 10
             {
-                question:"O que acontece se você definir um 'onAction' no Scene Builder mas esquecer de criar o método correspondente no Controller Java?",
+                question:"No Controller, como você associa uma função a um clique de botão definido no Scene Builder?",
                 options: [
-                    "O JavaFX ignora o evento e não faz nada",  
-                    "O programa gera um erro ao carregar o FXML", 
-                    "O Scene Builder cria automaticamente o método no Controller",
-                    "O componente não será exibido na interface"
+                    "Mudando a cor do botão no CSS",  
+                    "Campo OnAction na aba Code do Scene Builder", 
+                    "Usando a aba properties para definir o ID do botão ",
+                    "Usando a aba layout para arrastar a função"
                 ],
                 correct: 1
             }
