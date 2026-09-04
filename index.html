@@ -37,12 +37,15 @@
         <!-- Cabeçalho Principal -->
         <div class="bg-gradient-to-r from-cyan-700 to-indigo-800 p-6 text-white text-center brazil">
             <div class="inline-flex p-3 bg-white/10 rounded-full mb-3">
-                <i class="fa-brands fa-java text-3xl text-yellow-300"></i>
+                <i class="fa-brands fa-git-alt text-3xl "></i>
+            </div>
+            <div class="inline-flex p-3 bg-white/10 rounded-full mb-3">
+                <i class="fa-brands fa-github text-3xl"></i>
             </div>
             
-            <h1 class="text-2xl font-bold tracking-tight">Desenvolver Aplicações Desktop ❤️ JAVAFX ☕</h1>
-            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona 31/07/2026</h2>
-            <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas -SENAC DF</p>
+            <h1 class="text-2xl font-bold tracking-tight">🐈‍⬛ GIT e GITHUB 🐈</h1>
+            <h2 class=" font-bold tracking-tight"> Atividade Assíncrona 04/09/2026</h2>
+            <p class="text-cyan-100 text-sm mt-1">Técnico em Desenvolvimento de Sistemas - SENAC DF</p>
             <p class="text-cyan-100 text-sm mt-1">Professor Jociel </p>
         </div>
 
@@ -195,116 +198,116 @@
         // Banco de Dados do Quiz (10 questões com alternativas)
             const quizQuestions = [
             {
-                question: "Qual é a extensão de arquivo utilizada pelo Scene Builder para salvar o design da interface gráfica?",
+                question: "Qual é a principal diferença entre Git e GitHub, conforme apresentado no material?",
                 options: [
-                    ".java", 
-                    ".fxml", 
-                    ".css",
-                    ".javafx" 
+                    "Git é exclusivo para o sistema Linux, e GitHub é exclusivo para o Windows.", 
+                    "Git é um editor de código-fonte, e GitHub é um compilador de linguagens.", 
+                    "Git é uma plataforma em nuvem, e GitHub é um sistema de controle local.    ",
+                    "Git é um sistema de controle local, e GitHub é uma plataforma em nuvem." 
                 ],
-                correct: 1
+                correct: 3
             },
             //Questâo 02
             {
-                question:  "Em um sistema de estoque, qual componente do JavaFX é o mais adequado para listar vários produtos em colunas como 'Nome', 'Quantidade' e 'Preço'?",
+                question:  "Qual comando deve ser utilizado para criar um novo repositório Git em branco na sua máquina local?",
                 options: [
-                    "TextArea",
-                    "TableView",
-                    "TablePane",
-                    "ListView"
+                    "git clone",
+                    "git init",
+                    "git config",
+                    "git commit"
                 ],
                 correct: 1
             },
             //Questâo 03
             {
-                question: "No padrão MVC utilizado pelo JavaFX, qual é a função principal da classe 'Controller'?",
+                question: "No fluxo de trabalho do Git, qual comando move os arquivos modificados do Diretório de Trabalho para a Área de Preparação (Staging Area)?",
                 options: [
-                    "Armazenar o banco de dados", 
-                    "Gerenciar a lógica de interação.", 
-                    "Compilar o projeto inteiro",
-                    "Desenhar a tela do usuário"
+                    "git push", 
+                    "git commit", 
+                    "git add",
+                    "git pull"
                 ],
-                correct: 1
+                correct: 2
             },
             //Questâo 04
             {
-                question: "Qual componente de layout do Scene Builder organiza os elementos automaticamente em uma única coluna vertical?",
+                question: "Como podemos descrever corretamente a função do comando git commit?",
                 options: [
-                    "AnchorPane",
-                    "VBox",
-                    "HBox",
-                    "StackPane"
+                    "Desfazer a última alteração realizada no código do projeto atual.",
+                    "Salvar permanentemente as alterações da área de preparação no histórico.",
+                    "Enviar as alterações do repositório local diretamente para o GitHub.",
+                    "Criar uma nova ramificação paralela para desenvolver funcionalidades."
                 ],
                 correct: 1
             },
             //Questâo 05
             {
-                question: "Para que uma TableView no JavaFX reflita automaticamente adições ou remoções de produtos no estoque, qual tipo de lista deve ser usada no Controller?",
+                question: "Qual é a utilidade do arquivo .gitignore em um projeto gerenciado pelo Git?",
                 options: [
-                    "LinkedList",
-                    "ObservableList",
-                    "Vector",
-                    "ArrayList"
+                    "Especificar quais arquivos e pastas não devem ser rastreados ou enviados.",
+                    "Registrar o histórico detalhado de todas as alterações dos desenvolvedores.",
+                    "Armazenar as senhas do usuário para acesso automático ao sistema GitHub.",
+                    "Configurar a identidade global do usuário, incluindo nome e endereço de e-mail."
                 ],
-                correct: 1
+                correct: 0
             },
             //Questâo 06
             {
-                question:"No Scene Builder, onde você define o ID que será usado para referenciar um botão no código Java?",
+                question:"Qual comando Git é utilizado para trocar de uma ramificação (branch) para outra diferente dentro de um mesmo repositório?",
                 options: [
-                    "Menu Style", 
-                    "Campo fx:id", 
-                    "No arquivo css", 
-                    "Propriedade Text"
+                    "git merge", 
+                    "git branch", 
+                    "git rebase", 
+                    "git checkout"
                 ],
-                correct: 1
+                correct: 3
             },
             //Questâo 07
             {
-                question:"Qual método é automaticamente chamado pelo JavaFX assim que o arquivo FXML termina de ser carregado, sendo ideal para popular uma tabela de estoque?",
+                question: "Ambos os comandos git merge e git rebase integram branches, mas qual é a principal característica exclusiva do comando git rebase?",
                 options: [
-                    "contructor()",
-                    "initialize()",
-                    "main()",    
-                    "start()"
+                    "Ele refaz o histórico de commits, tornando a linha do tempo do projeto linear.",
+                    "Ele apaga permanentemente o branch secundário após a integração do código.",
+                    "Ele envia as alterações mescladas diretamente para a nuvem sem aprovação.",    
+                    "Ele exige que o desenvolvedor tenha permissões de administrador no servidor."
                 ],
-                correct: 1
+                correct: 0
             },
 
             //Questâo 08
 
                 {
-                question: "Como se chama a ação de linkar um arquivo CSS para o Scene Builder para alterar a aparência do sistema de estoque?",
+                question: "Qual é a função do comando git push na comunicação entre diferentes repositórios?",
                 options: [
-                    "Compilação visual",
-                    "Estilização via CSS",
-                    "Injeção de dependência",
-                    "Binding de dados"
+                    "Criar uma cópia exata de um repositório remoto na sua máquina local.",
+                    "Conectar o repositório local a um novo repositório remoto na rede mundial.",
+                    "Baixar as modificações do repositório remoto para o repositório local.",
+                    "Subir as modificações do repositório local para um repositório remoto."
                 ],
-                correct: 1
+                correct: 3
             },
             //Questâo 09
             {
-                question:"Se o usuário clicar no botão 'Adicionar' sem digitar o nome do produto, você quer exibir um alerta. Qual classe JavaFX é usada para isso?",
+                question:"Se um colega atualizou o repositório no GitHub, qual comando você usa para baixar e atualizar seu repositório local com essas mudanças?",
                 options: [
                 
-                    "Pane",
-                    "Alert",
-                    "Stage",
-                    "Scene"
+                    "git clone",
+                    "git revert",
+                    "git pull",
+                    "git remote"
                 ],
-                correct: 1
+                correct: 2
             },
             //Questâo 10
             {
-                question:"No Controller, como você associa uma função a um clique de botão definido no Scene Builder?",
+                question:"Qual é o propósito principal do arquivo README.md em um repositório hospedado no GitHub?",
                 options: [
-                    "Mudando a cor do botão no CSS",  
-                    "Campo OnAction na aba Code do Scene Builder", 
-                    "Usando a aba properties para definir o ID do botão ",
-                    "Usando a aba layout para arrastar a função"
+                    "Apresentar informações sobre o que o projeto faz e como utilizá-lo.",  
+                    "Registrar todas as mensagens de erro geradas durante o desenvolvimento.", 
+                    "Executar scripts automáticos para compilar o código-fonte continuamente.",
+                    "Armazenar o código principal da aplicação em uma linguagem interpretada."
                 ],
-                correct: 1
+                correct: 0
             }
         
         ];
